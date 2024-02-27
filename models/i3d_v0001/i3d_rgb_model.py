@@ -268,8 +268,11 @@ class I3D(torch.nn.Module):
             out = self.softmax(out_logits)
 
             return out, out_logits
-    
 
+
+I3D_rgb_model = I3D()
+ckpt_path = './models/i3d_v0001/checkpoints/i3d_rgb.pt'
+I3D_rgb_model.load_state_dict(torch.load(ckpt_path, map_location='cpu'))
 
 if __name__ == '__main__':
     # import sys
@@ -277,17 +280,12 @@ if __name__ == '__main__':
     
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-    model = I3D(modality="flow")
-    
-    is_load = True
-    if is_load:
-        ckpt_path = './models/i3d_v0001/checkpoints/i3d_flow.pt'
-        model.load_state_dict(torch.load(ckpt_path, map_location='cpu'))
+    model = I3D_rgb_model   
 
     model.eval()
     model.to(device)    
 
-    input_features = torch.randn(1,2,16,224,224)
+    input_features = torch.randn(1,3,16,224,224)
     input_features = input_features.to(device)
 
     outputs = model(input_features, features=True)
