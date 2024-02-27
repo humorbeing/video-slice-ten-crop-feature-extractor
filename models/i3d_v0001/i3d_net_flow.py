@@ -290,5 +290,5 @@ if __name__ == '__main__':
     input_features = torch.randn(1,2,16,224,224)
     input_features = input_features.to(device)
 
-    outputs = model(input_features)
+    outputs = model(input_features, features=True)
     print('end')
