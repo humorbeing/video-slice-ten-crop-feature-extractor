@@ -41,7 +41,7 @@ rgb_dev255 = (rgb_resize * 2 / 255) - 1.
 # 10 crop
 from torchvision.transforms import TenCrop
 tencrop = TenCrop([224,224])
-rgb_temp11 = tencrop.forward(rgb_resize)
+rgb_temp11 = tencrop.forward(rgb_dev255)
 rgb_tencrop = torch.stack(rgb_temp11)
 
 # Ncrop T C H W   to   Ncrop C T H W
