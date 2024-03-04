@@ -11,11 +11,9 @@ from torchvision.io.video import read_video
 # pip install av  # If pyav is missing
 
 # My-Me-made module
-# import sys
-# sys.path.append('.')
-# from smart_fish_project_tools.i3d_utility import get_i3d_video_feature
-
-from i3d_utility import get_i3d_video_feature
+import sys
+sys.path.append('.')
+from smart_fish_project_tools.i3d_utility import get_i3d_video_feature
 
 # options
 num_segment_cut_from_video = 12
